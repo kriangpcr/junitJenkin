@@ -11,15 +11,15 @@ pipeline {
 
         stage('Run Unit Tests') {
             steps {
-                // รัน unit tests โดยใช้ Maven หรือคำสั่งของคุณเอง
+                // รัน unit tests โดยใช้ Maven
                 script {
-                    // ตัวอย่างการรัน unit tests ด้วย Maven
-                    sh 'mvn test'  // ใช้คำสั่งนี้ถ้าคุณใช้ Maven
+                    // รันคำสั่ง Maven เพื่อทดสอบ
+                    sh 'mvn clean test'  // ใช้คำสั่งนี้เพื่อทำความสะอาดก่อนและรันการทดสอบ
                 }
             }
             post {
                 always {
-                    // ใช้เพื่อแสดงผลลัพธ์การทดสอบ JUnit หลังจากรันเสร็จ
+                    // ใช้เพื่อแสดงผลลัพธ์การทดสอบ JUnit
                     junit '**/target/test-*.xml'  // ที่อยู่ไฟล์ JUnit reports (สำหรับ Maven)
                 }
             }
